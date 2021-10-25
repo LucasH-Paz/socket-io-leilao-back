@@ -24,19 +24,18 @@ const getAll = async () => {
   const Collection = await connect.getConnection()
     .then((db) => db.collection('valores'));
   
-  return Collection.find().toArray();
+  return Collection.findAll().toArray();
 };
 
-const updateById = async (id, payload) => {
-  const Collection = await connect.getConnection()
-    .then((db) => db.collection('valores'));
-  
-  return Collection.findOneAndUpdate(
-    { _id: ObjectID(id) },
-    { $set: { ...payload } },
-    { returnOriginal: false, upsert: true },
-  ).toArray();
+const updateById = async (id) => {
+  const db = await connection();
+  return db.collection('valores').findOneAndUpdate(
+    { _id : ObjectID(id) },
+    { $inc: { valor: 5 } },
+    {returnOriginal: false }
+  );
 };
+
 
 module.exports = {
   preStart,
