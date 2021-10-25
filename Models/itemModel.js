@@ -24,7 +24,7 @@ const getAll = async () => {
   const Collection = await connect.getConnection()
     .then((db) => db.collection('valores'));
   
-  return Collection.findAll().toArray();
+  return Collection.find().toArray();
 };
 
 const updateById = async (id) => {

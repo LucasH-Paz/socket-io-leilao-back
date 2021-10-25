@@ -16,9 +16,8 @@ const PORT = 3001;
 
 app.get('/items', async (_req, res) => {
   try {
-    await preStart();
+    const start = await preStart();
     const items = await getAll();
-    console.log(items);
     return res.status(200).json(items);
   } catch (error) {
     console.log(error.message);

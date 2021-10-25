@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const MONGO_DB_URL = 'mongodb://mongodb:27017/leilao';
+const MONGO_DB_URL = 'mongodb://localhost:27017/leilao';
 const DB_NAME = 'leilao';
 
 let schema = null;
